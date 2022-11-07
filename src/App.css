@@ -1,3 +1,16 @@
 .App{
   height: 100vh;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.catalogue{
+  display: flex;
+}
+.catalogue_list{
+  margin-right: 20px;
+  color: #00a6ff;
+}
+.catalogue_list i{
+  margin-right: 5px;
 }

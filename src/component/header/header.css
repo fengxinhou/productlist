@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  margin-left: 20px;
+  background: #ffffff;
+}
+.catalogue {
+  display: flex;
+  margin-bottom: 30px;
+}
+.catalogue_list {
+  margin-right: 20px;
+  color: #00a6ff;
+}
+.catalogue_list i {
+  margin-right: 5px;
+}

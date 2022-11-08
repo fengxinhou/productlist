@@ -1,12 +1,11 @@
 import "./App.css";
-import Catalogue from "./component/category/Catalogue";
-
+import Header from "./component/header/Header";
+import ProductList from "./component/product/ProductList";
 function App() {
   return (
-    <div className="App">
-      <h1>产品列表</h1>
-      <p>目前项目在跟进的产品</p>
-      <Catalogue />
+    <div className="app">
+      <Header />
+      <ProductList />
     </div>
   );
 }

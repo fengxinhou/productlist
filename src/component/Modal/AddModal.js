@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./modal.css";
+import "./addModal.css";
 
-function Modal(props) {
+function AddModal(props) {
   const { visible, onClose, addProduct } = props;
   const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
@@ -15,7 +15,7 @@ function Modal(props) {
     visible && (
       <>
         <div className="mask" />
-        <div className="modal">
+        <div className="add_modal">
           <div className="title">
             <p>Add Product</p>
           </div>
@@ -67,4 +67,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default AddModal;

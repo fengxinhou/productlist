@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./productList.css";
 import Card from "../card/Card";
-import axios from "axios";
 import AddModal from "../Modal/AddModal";
+import { ProductContext } from "../../App";
 
 function ProductList(props) {
-  const [products, setProducts] = useState([]);
+  const { addNewProduct } = props;
+  const products = useContext(ProductContext);
   const [addModal, setAddModal] = useState(false);
-  useEffect(() => {
-    axios.get("http://localhost:3000/products").then((res) => {
-      setProducts(res.data);
-    });
-  }, []);
+
   const openAddModal = () => {
     setAddModal(true);
   };
@@ -26,9 +23,8 @@ function ProductList(props) {
       name: productName,
       description: productDesc,
     };
-    axios.post("http://localhost:3000/products", newProduct).then((res) => {
-      setProducts([...products, res.data]);
-    });
+    addNewProduct(newProduct);
+
     setAddModal(false);
   };
 

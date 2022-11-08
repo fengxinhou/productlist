@@ -6,17 +6,18 @@ import EditModal from "../Modal/EditModal";
 function Card(props) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-  const openDeleteModal = () => {
+
+  const openDeleteModal = (id) => {
+    console.log(id);
     setDeleteModal(true);
   };
-
   const closeDeleteModal = () => {
     setDeleteModal(false);
   };
+
   const openEditModal = () => {
     setEditModal(true);
   };
-
   const closeEditModal = () => {
     setEditModal(false);
   };
@@ -34,7 +35,7 @@ function Card(props) {
             </div>
             <div className="option">
               <button onClick={openEditModal}>编辑</button>
-              <button onClick={openDeleteModal}>删除</button>
+              <button onClick={() => openDeleteModal(item.id)}>删除</button>
             </div>
           </div>
         );

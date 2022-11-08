@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import "./card.css";
 import DeleteModal from "../Modal/DeleteModal";
+import EditModal from "../Modal/EditModal";
 
 function Card(props) {
   const [deleteModal, setDeleteModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
   const openDeleteModal = () => {
     setDeleteModal(true);
   };
 
   const closeDeleteModal = () => {
     setDeleteModal(false);
+  };
+  const openEditModal = () => {
+    setEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModal(false);
   };
   return (
     <>
@@ -24,13 +33,14 @@ function Card(props) {
               </div>
             </div>
             <div className="option">
-              <button>编辑</button>
+              <button onClick={openEditModal}>编辑</button>
               <button onClick={openDeleteModal}>删除</button>
             </div>
           </div>
         );
       })}
       <DeleteModal visible={deleteModal} onClose={closeDeleteModal} />
+      <EditModal visible={editModal} onClose={closeEditModal} />
     </>
   );
 }

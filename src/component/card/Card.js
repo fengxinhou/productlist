@@ -10,8 +10,8 @@ function Card(props) {
             <div className="card_product">
               <i className="iconfont">{item.icon}</i>
               <div className="content">
-                <span>{item.title}</span>
-                <p>{item.content}</p>
+                <span>{item.name}</span>
+                <p>{item.description}</p>
               </div>
             </div>
             <div className="option">

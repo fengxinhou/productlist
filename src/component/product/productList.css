@@ -14,12 +14,17 @@
   position: relative;
   border: 1px dashed #00a6ff;
 }
-.newCard > span {
+.newCard > button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
   position: absolute;
   left: 38%;
   top: 40%;
   color: #00a6ff;
+  cursor: pointer;
 }
-.newCard > span::before {
+.newCard > button::before {
   content: "+ ";
 }

@@ -12,21 +12,37 @@ function ProductList(props) {
       setProducts(res.data);
     });
   }, []);
-  const addNewProduct = () => {
+  const openAddModal = () => {
     setAddModal(true);
   };
 
-  const handleCloseModal = () => {
+  const closeAddModal = () => {
+    setAddModal(false);
+  };
+  const addProduct = (productUrl, productName, productDesc) => {
+    const newProduct = {
+      id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
+      icon: "\ue607",
+      name: productName,
+      description: productDesc,
+    };
+    axios.post("http://localhost:3000/products", newProduct).then((res) => {
+      setProducts([...products, res.data]);
+    });
     setAddModal(false);
   };
 
   return (
     <div className="main">
       <div className="newCard">
-        <button onClick={addNewProduct}>新增产品</button>
+        <button onClick={openAddModal}>新增产品</button>
       </div>
       <Card products={products} />
-      <Modal visible={addModal} onClose={handleCloseModal} />
+      <Modal
+        visible={addModal}
+        onClose={closeAddModal}
+        addProduct={addProduct}
+      />
     </div>
   );
 }

@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import "./modal.css";
 
 function Modal(props) {
-  const { visible, onClose } = props;
+  const { visible, onClose, addProduct } = props;
   const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [productDesc, setProductDesc] = useState("");
-
+  const addNewProduct = () => {
+    if (productUrl && productName && productDesc) {
+      addProduct(productUrl, productName, productDesc);
+    }
+  };
   return (
     visible && (
       <>
@@ -55,7 +59,7 @@ function Modal(props) {
           </form>
           <div className="modal_option">
             <button onClick={onClose}>Cancel</button>
-            <button>OK</button>
+            <button onClick={addNewProduct}>OK</button>
           </div>
         </div>
       </>

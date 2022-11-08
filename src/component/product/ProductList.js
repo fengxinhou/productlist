@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./productList.css";
+import Card from "../card/Card";
 import axios from "axios";
 
 function ProductList(props) {
@@ -15,23 +16,7 @@ function ProductList(props) {
       <div className="newCard">
         <span>新增产品</span>
       </div>
-      {products.map((item) => {
-        return (
-          <div className="card" key={item.id}>
-            <div className="card_product">
-              <i className="iconfont">{item.icon}</i>
-              <div className="content">
-                <span>{item.title}</span>
-                <p>{item.content}</p>
-              </div>
-            </div>
-            <div className="option">
-              <button>编辑</button>
-              <button>删除</button>
-            </div>
-          </div>
-        );
-      })}
+      <Card products={products} />
     </div>
   );
 }

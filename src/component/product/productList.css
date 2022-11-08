@@ -10,7 +10,7 @@
   width: 300px;
   height: 200px;
   background: #ffffff;
-  margin: 10px 0 10px 10px;
+  margin: 20px 0 10px 10px;
   position: relative;
   border: 1px dashed #00a6ff;
 }
@@ -22,58 +22,4 @@
 }
 .newCard > span::before {
   content: "+ ";
-}
-.card {
-  width: 300px;
-  height: 200px;
-  background: #ffffff;
-  margin: 10px 0 0 10px;
-}
-.card_product {
-  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
-  margin: 10px 0 0 10px;
-  display: grid;
-  grid-template-columns: 60px auto;
-  grid-gap: 5px;
-}
-.card_product i {
-  grid-column: 1;
-  font-size: 40px;
-  color: #00a6ff;
-}
-.card_product .content {
-  display: grid;
-  grid-template-rows: 30px auto;
-}
-.card_product .content span {
-  font-size: 24px;
-}
-.card_product .content p {
-  width: 90%;
-  height: 80px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  font-size: 16px;
-}
-.card .option {
-  margin-top: 10px;
-  margin-left: 10px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-.card .option button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  vertical-align: baseline;
-  font-family: inherit;
-  font-weight: inherit;
-  color: #b6b6b6;
-}
-.card .option button:first-child {
-  border-right: 2px solid rgba(0, 0, 0, 0.03);
 }

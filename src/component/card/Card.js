@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./card.css";
+import DeleteModal from "../Modal/DeleteModal";
 
 function Card(props) {
+  const [deleteModal, setDeleteModal] = useState(false);
+  const openDeleteModal = () => {
+    setDeleteModal(true);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModal(false);
+  };
   return (
     <>
       {props.products.map((item) => {
@@ -16,11 +25,12 @@ function Card(props) {
             </div>
             <div className="option">
               <button>编辑</button>
-              <button>删除</button>
+              <button onClick={openDeleteModal}>删除</button>
             </div>
           </div>
         );
       })}
+      <DeleteModal visible={deleteModal} onClose={closeDeleteModal} />
     </>
   );
 }

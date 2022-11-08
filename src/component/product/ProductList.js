@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./productList.css";
 import Card from "../card/Card";
 import axios from "axios";
-import Modal from "../Modal/Modal";
+import AddModal from "../Modal/AddModal";
 
 function ProductList(props) {
   const [products, setProducts] = useState([]);
@@ -38,7 +38,7 @@ function ProductList(props) {
         <button onClick={openAddModal}>新增产品</button>
       </div>
       <Card products={products} />
-      <Modal
+      <AddModal
         visible={addModal}
         onClose={closeAddModal}
         addProduct={addProduct}

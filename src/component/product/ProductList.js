@@ -23,7 +23,7 @@ function ProductList() {
         onClose={() => {
           setAddModal(false);
         }}
-        addProduct={() => {
+        closeAddModal={() => {
           setAddModal(false);
         }}
       />

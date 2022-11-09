@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import "./addModal.css";
 import { ProductContext } from "../../App";
-import axios from "axios";
+import { addProduct } from "../../api/products";
 
 function AddModal(props) {
   const { products, setProducts } = useContext(ProductContext);
-  const { visible, onClose, addProduct } = props;
+  const { visible, onClose, closeAddModal } = props;
   const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [productDesc, setProductDesc] = useState("");
 
-  const URL = "http://localhost:3000/products";
   const addNewProduct = () => {
     if (productUrl && productName && productDesc) {
       const newProduct = {
@@ -19,17 +18,13 @@ function AddModal(props) {
         name: productName,
         description: productDesc,
       };
-      axios
-        .post(URL, newProduct)
-        .then((res) => res.data)
-        .then((data) => {
-          setProducts([...products, data]);
-        });
+      addProduct(newProduct);
+      setProducts([...products, newProduct]);
       setProductUrl("");
       setProductName("");
       setProductDesc("");
     }
-    addProduct();
+    closeAddModal();
   };
   return (
     visible && (

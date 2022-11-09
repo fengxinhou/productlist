@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./addModal.css";
 import { ProductContext } from "../../App";
-import axios from "axios";
+import { updateProduct } from "../../api/products";
 
 function EditModal(props) {
   const { products, setProducts } = useContext(ProductContext);
@@ -11,7 +11,7 @@ function EditModal(props) {
   const [editProductDesc, setEditProductDesc] = useState("");
 
   const { id, url, name, description } = editProduct;
-  const URL = "http://localhost:3000/products";
+
   useEffect(() => {
     if (visible) {
       setEditProductUrl(url);
@@ -19,15 +19,12 @@ function EditModal(props) {
       setEditProductDesc(description);
     }
   }, [visible, editProduct, url, name, description]);
+
   const handleClickEditProduct = () => {
     if (editProductUrl && editProductName && editProductDesc) {
-      axios
-        .put(`${URL}/${id}`, {
-          url: editProductUrl,
-          name: editProductName,
-          description: editProductDesc,
-        })
-        .then((res) => res.status);
+      updateProduct(id, url, name, description).then((status) => {
+        return status;
+      });
       const newProducts = products.map((item) => {
         if (item.id === id) {
           return {

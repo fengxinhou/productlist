@@ -5,7 +5,7 @@ import { addProduct } from "../../api/products";
 
 function AddModal(props) {
   const { products, setProducts } = useContext(ProductContext);
-  const { visible, onClose, closeAddModal } = props;
+  const { visible, onClose, confirmAddProduct } = props;
   const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [productDesc, setProductDesc] = useState("");
@@ -24,7 +24,7 @@ function AddModal(props) {
       setProductName("");
       setProductDesc("");
     }
-    closeAddModal();
+    confirmAddProduct();
   };
   return (
     visible && (

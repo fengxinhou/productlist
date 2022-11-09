@@ -10,6 +10,7 @@ function Card() {
   const [editModal, setEditModal] = useState(false);
   const [deleteProductID, setDeleteProductID] = useState(0);
   const [editProduct, setEditProduct] = useState({});
+
   const openDeleteModal = (id) => {
     setDeleteModal(true);
     setDeleteProductID(id);
@@ -45,7 +46,7 @@ function Card() {
           setDeleteModal(false);
         }}
         deleteProductID={deleteProductID}
-        deleteStatus={() => {
+        confirmDeleteProduct={() => {
           setDeleteModal(false);
         }}
       />

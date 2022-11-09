@@ -1,23 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./deleteModal.css";
-import axios from "axios";
 import { ProductContext } from "../../App";
+import { deleteProduct } from "../../api/products";
 
 function DeleteModal(props) {
   const { products, setProducts } = useContext(ProductContext);
-  const { visible, onClose, deleteProductID, deleteStatus } = props;
-  const [itemId, setItemID] = useState(0);
-  const URL = "http://localhost:3000/products";
-  useEffect(() => {
-    if (visible) {
-      setItemID(deleteProductID);
-    }
-  }, [visible, deleteProductID]);
+  const { visible, onClose, deleteProductID, confirmDeleteProduct } = props;
 
-  const handleDeleteProduct = (itemId) => {
-    axios.delete(`${URL}/${itemId}`).then((res) => res.status);
-    setProducts(products.filter((item) => item.id !== itemId));
-    deleteStatus();
+  const handleDeleteProduct = (id) => {
+    deleteProduct(id).then((status) => status);
+    setProducts(products.filter((item) => item.id !== id));
+    confirmDeleteProduct();
   };
 
   return (
@@ -32,7 +25,9 @@ function DeleteModal(props) {
           <p>Are you sure you want to delete this product?</p>
           <div className="modal_option">
             <button onClick={onClose}>Cancel</button>
-            <button onClick={() => handleDeleteProduct(itemId)}>confirm</button>
+            <button onClick={() => handleDeleteProduct(deleteProductID)}>
+              confirm
+            </button>
           </div>
         </div>
       </>

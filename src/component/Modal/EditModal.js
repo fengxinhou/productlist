@@ -53,6 +53,7 @@ function EditModal(props) {
                 <input
                   type="url"
                   value={editProductUrl}
+                  onMouseOver={(e) => (e.target.title = editProductUrl)}
                   onChange={(e) => {
                     setEditProductUrl(e.target.value);
                   }}
@@ -65,6 +66,7 @@ function EditModal(props) {
                 <input
                   type="text"
                   value={editProductName}
+                  onMouseOver={(e) => (e.target.title = editProductName)}
                   onChange={(e) => {
                     setEditProductName(e.target.value);
                   }}
@@ -77,6 +79,7 @@ function EditModal(props) {
                 <input
                   type="text"
                   value={editProductDesc}
+                  onMouseOver={(e) => (e.target.title = editProductDesc)}
                   onChange={(e) => {
                     setEditProductDesc(e.target.value);
                   }}

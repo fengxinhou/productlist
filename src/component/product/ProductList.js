@@ -23,7 +23,7 @@ function ProductList() {
         onClose={() => {
           setAddModal(false);
         }}
-        closeAddModal={() => {
+        confirmAddProduct={() => {
           setAddModal(false);
         }}
       />

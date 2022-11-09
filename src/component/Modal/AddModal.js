@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./addModal.css";
+import { ProductContext } from "../../App";
+import axios from "axios";
 
 function AddModal(props) {
+  const { products, setProducts } = useContext(ProductContext);
   const { visible, onClose, addProduct } = props;
   const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [productDesc, setProductDesc] = useState("");
+
+  const URL = "http://localhost:3000/products";
   const addNewProduct = () => {
     if (productUrl && productName && productDesc) {
-      addProduct(productUrl, productName, productDesc);
+      const newProduct = {
+        id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
+        url: productUrl,
+        name: productName,
+        description: productDesc,
+      };
+      axios
+        .post(URL, newProduct)
+        .then((res) => res.data)
+        .then((data) => {
+          console.log(data);
+          setProducts([...products, data]);
+        });
+      setProductUrl("");
+      setProductName("");
+      setProductDesc("");
     }
+    addProduct();
   };
   return (
     visible && (

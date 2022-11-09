@@ -15,17 +15,13 @@ function App() {
     });
   }, []);
 
-  const addNewProduct = (product) => {
-    axios.post(URL, product).then((res) => {
-      setProducts([...products, res.data]);
-    });
-  };
-
   return (
-    <ProductContext.Provider value={products}>
+    <ProductContext.Provider
+      value={{ products: products, setProducts: setProducts }}
+    >
       <div className="app">
         <Header />
-        <ProductList addNewProduct={addNewProduct} />
+        <ProductList />
       </div>
     </ProductContext.Provider>
   );

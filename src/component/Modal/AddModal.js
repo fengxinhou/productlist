@@ -41,6 +41,7 @@ function AddModal(props) {
                 <input
                   type="url"
                   value={productUrl}
+                  onMouseOver={(e) => (e.target.title = productUrl)}
                   onChange={(e) => {
                     setProductUrl(e.target.value);
                   }}
@@ -53,6 +54,7 @@ function AddModal(props) {
                 <input
                   type="text"
                   value={productName}
+                  onMouseOver={(e) => (e.target.title = productName)}
                   onChange={(e) => {
                     setProductName(e.target.value);
                   }}
@@ -65,6 +67,7 @@ function AddModal(props) {
                 <input
                   type="text"
                   value={productDesc}
+                  onMouseOver={(e) => (e.target.title = productDesc)}
                   onChange={(e) => {
                     setProductDesc(e.target.value);
                   }}

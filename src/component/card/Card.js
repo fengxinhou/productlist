@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./card.css";
 import DeleteModal from "../Modal/DeleteModal";
 import EditModal from "../Modal/EditModal";
+import { ProductContext } from "../../App";
 
 function Card(props) {
+  const products = useContext(ProductContext);
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
-
+  const [deleteProductID, setDeleteProductID] = useState({});
   const openDeleteModal = (id) => {
-    console.log(id);
     setDeleteModal(true);
-  };
-  const closeDeleteModal = () => {
-    setDeleteModal(false);
+    setDeleteProductID(id);
   };
 
   const openEditModal = () => {
     setEditModal(true);
   };
-  const closeEditModal = () => {
-    setEditModal(false);
-  };
+
   return (
     <>
-      {props.products.map((item) => {
+      {products.map((item) => {
         return (
           <div className="card" key={item.id}>
             <div className="card_product">
-              <i className="iconfont">{item.icon}</i>
+              <img src={item.url} alt={item.name} />
               <div className="content">
                 <span>{item.name}</span>
                 <p>{item.description}</p>
@@ -40,8 +37,22 @@ function Card(props) {
           </div>
         );
       })}
-      <DeleteModal visible={deleteModal} onClose={closeDeleteModal} />
-      <EditModal visible={editModal} onClose={closeEditModal} />
+      <DeleteModal
+        visible={deleteModal}
+        onClose={() => {
+          setDeleteModal(false);
+        }}
+        deleteProductID={deleteProductID}
+        deleteStatus={(value) => {
+          setDeleteModal(value);
+        }}
+      />
+      <EditModal
+        visible={editModal}
+        onClose={() => {
+          setEditModal(false);
+        }}
+      />
     </>
   );
 }

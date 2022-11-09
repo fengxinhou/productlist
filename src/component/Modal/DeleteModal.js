@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./deleteModal.css";
+import axios from "axios";
 
 function DeleteModal(props) {
-  const { visible, onClose } = props;
-  const deleteProduct = () => {};
+  const { visible, onClose, deleteProductID, deleteStatus } = props;
+  const [itemId, setItemID] = useState(0);
+  const URL = "http://localhost:3000/products";
+  useEffect(() => {
+    if (visible) {
+      setItemID(deleteProductID);
+    }
+  }, [visible, deleteProductID]);
+  const handleDeleteProduct = (itemId) => {
+    axios.delete(`${URL}/${itemId}`).then((res) => {
+      alert("删除成功!");
+    });
+    deleteStatus(false);
+  };
+
   return (
     visible && (
       <>
@@ -16,7 +30,7 @@ function DeleteModal(props) {
           <p>Are you sure you want to delete this product?</p>
           <div className="modal_option">
             <button onClick={onClose}>Cancel</button>
-            <button onClick={deleteProduct}>confirm</button>
+            <button onClick={() => handleDeleteProduct(itemId)}>confirm</button>
           </div>
         </div>
       </>

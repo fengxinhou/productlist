@@ -7,18 +7,20 @@ import axios from "axios";
 export const ProductContext = createContext({});
 
 function App() {
+  const URL = "http://localhost:3000/products";
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3000/products").then((res) => {
+    axios.get(URL).then((res) => {
       setProducts(res.data);
     });
   }, []);
 
   const addNewProduct = (product) => {
-    axios.post("http://localhost:3000/products", product).then((res) => {
+    axios.post(URL, product).then((res) => {
       setProducts([...products, res.data]);
     });
   };
+
   return (
     <ProductContext.Provider value={products}>
       <div className="app">

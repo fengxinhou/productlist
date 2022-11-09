@@ -1,12 +1,48 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./addModal.css";
+import { ProductContext } from "../../App";
+import axios from "axios";
 
 function EditModal(props) {
-  const { visible, onClose } = props;
-  const [productUrl, setProductUrl] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productDesc, setProductDesc] = useState("");
+  const { products, setProducts } = useContext(ProductContext);
+  const { visible, onClose, editProduct, confirmEditProduct } = props;
+  const [editProductUrl, setEditProductUrl] = useState("");
+  const [editProductName, setEditProductName] = useState("");
+  const [editProductDesc, setEditProductDesc] = useState("");
 
+  const { id, url, name, description } = editProduct;
+  const URL = "http://localhost:3000/products";
+  useEffect(() => {
+    if (visible) {
+      setEditProductUrl(url);
+      setEditProductName(name);
+      setEditProductDesc(description);
+    }
+  }, [visible, editProduct, url, name, description]);
+  const handleClickEditProduct = () => {
+    if (editProductUrl && editProductName && editProductDesc) {
+      axios
+        .put(`${URL}/${id}`, {
+          url: editProductUrl,
+          name: editProductName,
+          description: editProductDesc,
+        })
+        .then((res) => res.status);
+      const newProducts = products.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            url: editProductUrl,
+            name: editProductName,
+            description: editProductDesc,
+          };
+        }
+        return item;
+      });
+      setProducts(newProducts);
+    }
+    confirmEditProduct();
+  };
   return (
     visible && (
       <>
@@ -21,9 +57,9 @@ function EditModal(props) {
                 avatar url：
                 <input
                   type="url"
-                  value={productUrl}
+                  value={editProductUrl}
                   onChange={(e) => {
-                    setProductUrl(e.target.value);
+                    setEditProductUrl(e.target.value);
                   }}
                 />
               </label>
@@ -33,9 +69,9 @@ function EditModal(props) {
                 product name：
                 <input
                   type="text"
-                  value={productName}
+                  value={editProductName}
                   onChange={(e) => {
-                    setProductName(e.target.value);
+                    setEditProductName(e.target.value);
                   }}
                 />
               </label>
@@ -45,9 +81,9 @@ function EditModal(props) {
                 desc：
                 <input
                   type="text"
-                  value={productDesc}
+                  value={editProductDesc}
                   onChange={(e) => {
-                    setProductDesc(e.target.value);
+                    setEditProductDesc(e.target.value);
                   }}
                 />
               </label>
@@ -55,7 +91,7 @@ function EditModal(props) {
           </form>
           <div className="modal_option">
             <button onClick={onClose}>Cancel</button>
-            <button>OK</button>
+            <button onClick={handleClickEditProduct}>OK</button>
           </div>
         </div>
       </>

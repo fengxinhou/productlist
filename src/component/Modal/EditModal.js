@@ -22,9 +22,7 @@ function EditModal(props) {
 
   const handleClickEditProduct = () => {
     if (editProductUrl && editProductName && editProductDesc) {
-      updateProduct(id, url, name, description).then((status) => {
-        return status;
-      });
+      updateProduct(id, url, name, description).then((status) => status);
       const newProducts = products.map((item) => {
         if (item.id === id) {
           return {

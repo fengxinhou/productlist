@@ -49,7 +49,7 @@ function EditModal(props) {
         <div className="mask" />
         <div className="add_modal">
           <div className="title">
-            <p>Add Product</p>
+            <p>Edit Product</p>
           </div>
           <form className="addForm">
             <div className="product_info">

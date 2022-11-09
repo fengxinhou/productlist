@@ -23,7 +23,6 @@ function AddModal(props) {
         .post(URL, newProduct)
         .then((res) => res.data)
         .then((data) => {
-          console.log(data);
           setProducts([...products, data]);
         });
       setProductUrl("");

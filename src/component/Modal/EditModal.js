@@ -65,6 +65,7 @@ function EditModal(props) {
                 product name：
                 <input
                   type="text"
+                  maxLength="8"
                   value={editProductName}
                   onMouseOver={(e) => (e.target.title = editProductName)}
                   onChange={(e) => {

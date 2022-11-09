@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./deleteModal.css";
 import axios from "axios";
+import { ProductContext } from "../../App";
 
 function DeleteModal(props) {
+  const { products, setProducts } = useContext(ProductContext);
   const { visible, onClose, deleteProductID, deleteStatus } = props;
   const [itemId, setItemID] = useState(0);
   const URL = "http://localhost:3000/products";
@@ -11,11 +13,11 @@ function DeleteModal(props) {
       setItemID(deleteProductID);
     }
   }, [visible, deleteProductID]);
+
   const handleDeleteProduct = (itemId) => {
-    axios.delete(`${URL}/${itemId}`).then((res) => {
-      alert("删除成功!");
-    });
-    deleteStatus(false);
+    axios.delete(`${URL}/${itemId}`).then((res) => res.status);
+    setProducts(products.filter((item) => item.id !== itemId));
+    deleteStatus();
   };
 
   return (

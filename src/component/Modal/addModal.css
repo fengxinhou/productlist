@@ -53,10 +53,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.product_info input:checked {
-  overflow: visible;
-}
-
 .modal_option {
   float: right;
 }

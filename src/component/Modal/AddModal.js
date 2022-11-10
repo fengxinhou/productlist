@@ -64,8 +64,7 @@ function AddModal(props) {
             <div className="product_info">
               <label>
                 desc：
-                <input
-                  type="text"
+                <textarea
                   value={productDesc}
                   onMouseOver={(e) => (e.target.title = productDesc)}
                   onChange={(e) => {

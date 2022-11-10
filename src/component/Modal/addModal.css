@@ -32,7 +32,7 @@
 }
 .product_info {
   width: 100%;
-  height: 80px;
+  height: 65px;
   white-space: nowrap;
 }
 .product_info:nth-child(2) {
@@ -52,6 +52,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.product_info textarea {
+  resize: none;
+  width: 400px;
+  height: 70px;
+  vertical-align: middle;
+  letter-spacing: 1px;
+  font-size: 16px;
 }
 .modal_option {
   float: right;

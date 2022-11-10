@@ -22,7 +22,11 @@
 }
 .card_product .content span {
   font-size: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 .card_product .content p {
   width: 90%;
   height: 80px;

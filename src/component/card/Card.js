@@ -29,7 +29,9 @@ function Card() {
             <div className="card_product">
               <img src={item.url} alt={`product-${item.name}`} />
               <div className="content">
-                <span>{item.name}</span>
+                <span onMouseOver={(e) => (e.target.title = item.name)}>
+                  {item.name}
+                </span>
                 <p onMouseOver={(e) => (e.target.title = item.description)}>
                   {item.description}
                 </p>

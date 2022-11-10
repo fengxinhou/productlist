@@ -54,7 +54,6 @@ function AddModal(props) {
                 <input
                   type="text"
                   value={productName}
-                  maxLength="8"
                   onMouseOver={(e) => (e.target.title = productName)}
                   onChange={(e) => {
                     setProductName(e.target.value);

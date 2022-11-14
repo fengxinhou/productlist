@@ -9,18 +9,18 @@
 }
 .delete_modal .title {
   margin: 30px 0 0 20px;
-  font-size: 30px;
+  font-size: 1.8rem;
   padding-bottom: 30px;
 }
 .delete_modal .title i {
-  font-size: 30px;
+  font-size: 1.8rem;
   color: #ff9100;
   margin-right: 10px;
 }
 
 .delete_modal p {
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .delete_modal .modal_option {
   margin-top: 25px;

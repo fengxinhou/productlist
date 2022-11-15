@@ -18,8 +18,8 @@ function AddModal(props) {
         name: productName,
         description: productDesc,
       };
-      const product = await addProduct(newProduct);
-      setProducts([...products, product]);
+      await addProduct(newProduct);
+      setProducts([...products, newProduct]);
       setProductUrl("");
       setProductName("");
       setProductDesc("");

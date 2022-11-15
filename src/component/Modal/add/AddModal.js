@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./addModal.css";
-import { ProductContext } from "../../App";
-import { addProduct } from "../../api/products";
+import { ProductContext } from "../../../App";
+import { addProduct } from "../../../api/products";
 
 function AddModal(props) {
   const { products, setProducts } = useContext(ProductContext);

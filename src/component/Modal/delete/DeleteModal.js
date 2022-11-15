@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import "./deleteModal.css";
-import { ProductContext } from "../../App";
-import { deleteProduct } from "../../api/products";
+import { ProductContext } from "../../../App";
+import { deleteProduct } from "../../../api/products";
 
 function DeleteModal(props) {
   const { products, setProducts } = useContext(ProductContext);
   const { visible, onClose, deleteProductID, confirmDeleteProduct } = props;
 
-  const handleDeleteProduct = (id) => {
-    deleteProduct(id).then((status) => status);
+  const handleDeleteProduct = async (id) => {
+    await deleteProduct(id);
     setProducts(products.filter((item) => item.id !== id));
     confirmDeleteProduct();
   };

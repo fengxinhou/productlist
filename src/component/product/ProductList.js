@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./productList.css";
 import Card from "../card/Card";
-import AddModal from "../Modal/AddModal";
+import AddModal from "../Modal/add/AddModal";
 
 function ProductList() {
   const [addModal, setAddModal] = useState(false);

@@ -78,6 +78,7 @@ function EditModal(props) {
                 desc：
                 <textarea
                   className="edit_textarea"
+                  rows="3"
                   value={editProductDesc}
                   onMouseOver={(e) => (e.target.title = editProductDesc)}
                   onChange={(e) => {

@@ -10,7 +10,7 @@ function AddModal(props) {
   const [productName, setProductName] = useState("");
   const [productDesc, setProductDesc] = useState("");
 
-  const addNewProduct = () => {
+  const addNewProduct = async () => {
     if (productUrl && productName && productDesc) {
       const newProduct = {
         id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
@@ -18,8 +18,8 @@ function AddModal(props) {
         name: productName,
         description: productDesc,
       };
-      addProduct(newProduct);
-      setProducts([...products, newProduct]);
+      const product = await addProduct(newProduct);
+      setProducts([...products, product]);
       setProductUrl("");
       setProductName("");
       setProductDesc("");

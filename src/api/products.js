@@ -4,8 +4,9 @@ const URL = "http://localhost:3000/products";
 
 export const getProduct = () => axios.get(URL).then((res) => res.data);
 
-export const addProduct = (newProduct) => {
-  axios.post(URL, newProduct).then((res) => res.data);
+export const addProduct = async (newProduct) => {
+  const res = await axios.post(URL, newProduct);
+  return res.data;
 };
 
 export const deleteProduct = (id) =>

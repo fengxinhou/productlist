@@ -15,9 +15,7 @@ function App() {
   }, []);
 
   return (
-    <ProductContext.Provider
-      value={{ products: products, setProducts: setProducts }}
-    >
+    <ProductContext.Provider value={{ products, setProducts }}>
       <div className="app">
         <Header />
         <ProductList />

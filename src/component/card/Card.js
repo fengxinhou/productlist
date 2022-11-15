@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./card.css";
-import DeleteModal from "../Modal/DeleteModal";
-import EditModal from "../Modal/EditModal";
+import DeleteModal from "../Modal/delete/DeleteModal";
+import EditModal from "../Modal/edit/EditModal";
 import { ProductContext } from "../../App";
 
 function Card() {
@@ -25,7 +25,7 @@ function Card() {
     <>
       {products.map((item) => {
         return (
-          <div className="card" key={item.id}>
+          <div className="card" key={item.id} role="productList">
             <div className="card_product">
               <img src={item.url} alt={`product-${item.name}`} />
               <div className="content">

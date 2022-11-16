@@ -29,7 +29,7 @@ function AddModal(props) {
   return (
     visible && (
       <>
-        <div className="mask" />
+        <div className="mask" role="addModal" />
         <div className="add_modal">
           <div className="title">
             <p>Add Product</p>

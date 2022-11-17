@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import "./productList.css";
 import Card from "../card/Card";
-import AddModal from "../Modal/add/AddModal";
+import Modal from "../Modal/Modal";
+import AddOrEdit from "../Modal/AddOrEdit";
 
 function ProductList() {
-  const [addModal, setAddModal] = useState(false);
+  const [modal, setModal] = useState(false);
 
   return (
     <div className="main">
       <div className="newCard">
         <button
           onClick={() => {
-            setAddModal(true);
+            setModal(true);
           }}
         >
           新增产品
         </button>
       </div>
       <Card />
-      <AddModal
-        visible={addModal}
-        onClose={() => {
-          setAddModal(false);
-        }}
-        confirmAddProduct={() => {
-          setAddModal(false);
-        }}
-      />
+      <Modal>
+        <AddOrEdit
+          visible={modal}
+          onClose={() => setModal(false)}
+          onConfirm={() => {
+            setModal(false);
+          }}
+          editProduct={""}
+        />
+      </Modal>
     </div>
   );
 }

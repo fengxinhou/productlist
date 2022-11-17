@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./card.css";
-import DeleteModal from "../Modal/delete/DeleteModal";
-import EditModal from "../Modal/edit/EditModal";
 import { ProductContext } from "../../App";
+import Modal from "../Modal/Modal";
+import AddOrEdit from "../Modal/AddOrEdit";
+import Delete from "../Modal/Delete";
 
 function Card() {
   const { products } = useContext(ProductContext);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
+  const [modal, setModal] = useState(false);
   const [deleteProductID, setDeleteProductID] = useState(0);
   const [editProduct, setEditProduct] = useState({});
 
@@ -17,7 +18,7 @@ function Card() {
   };
 
   const openEditModal = (product) => {
-    setEditModal(true);
+    setModal(true);
     setEditProduct(product);
   };
 
@@ -25,7 +26,7 @@ function Card() {
     <>
       {products.map((item) => {
         return (
-          <div className="card" key={item.id} role="productList">
+          <div className="card" key={item.id} role="card">
             <div className="card_product">
               <img src={item.url} alt={`product-${item.name}`} />
               <div className="content">
@@ -44,24 +45,28 @@ function Card() {
           </div>
         );
       })}
-      <DeleteModal
-        visible={deleteModal}
-        onClose={() => {
-          setDeleteModal(false);
-        }}
-        deleteProductID={deleteProductID}
-        confirmDeleteProduct={() => {
-          setDeleteModal(false);
-        }}
-      />
-      <EditModal
-        visible={editModal}
-        onClose={() => {
-          setEditModal(false);
-        }}
-        editProduct={editProduct}
-        confirmEditProduct={() => setEditModal(false)}
-      />
+      <Modal>
+        <Delete
+          visible={deleteModal}
+          onClose={() => {
+            setDeleteModal(false);
+          }}
+          deleteProductID={deleteProductID}
+          onConfirm={() => {
+            setDeleteModal(false);
+          }}
+        />
+      </Modal>
+      <Modal>
+        <AddOrEdit
+          editProduct={editProduct}
+          visible={modal}
+          onClose={() => setModal(false)}
+          onConfirm={() => {
+            setModal(false);
+          }}
+        />
+      </Modal>
     </>
   );
 }

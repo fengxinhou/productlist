@@ -26,7 +26,7 @@ describe("productList", () => {
         <Card />
       </ProductContext.Provider>
     );
-    const items = screen.getAllByRole("productList");
+    const items = screen.getAllByRole("card");
     expect(items.length).toEqual(2);
   });
 });

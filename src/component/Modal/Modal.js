@@ -1,20 +1,16 @@
 import React from "react";
 import "./modal.css";
 
-function Modal({ children }) {
-  const { visible, onClose, onConfirm } = children.props;
-  console.log(children.props);
+function Modal(props) {
+  const { open, title, children } = props;
 
   return (
-    visible && (
+    open && (
       <>
         <div className="mask" />
         <div className="modal_main">
-          {<>{children}</>}
-          <footer>
-            <button onClick={onClose}>Cancel</button>
-            <button onClick={onConfirm}>OK</button>
-          </footer>
+          <header>{title}</header>
+          {children}
         </div>
       </>
     )

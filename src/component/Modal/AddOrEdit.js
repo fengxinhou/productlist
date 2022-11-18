@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Footer from "./Footer";
 
 function AddOrEdit(props) {
-  const { editProduct } = props;
-
-  const [productUrl, setProductUrl] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productDesc, setProductDesc] = useState("");
-
+  const { editProduct, onClose, confirmAddProduct, confirmEditProduct } = props;
   const { id, url, name, description } = editProduct;
+  const [productUrl, setProductUrl] = useState(() => url);
+  const [productName, setProductName] = useState(() => name);
+  const [productDesc, setProductDesc] = useState(() => description);
 
-  useEffect(() => {
-    setProductUrl(url);
-    setProductName(name);
-    setProductDesc(description);
-  }, [editProduct, url, name, description]);
-
+  const handleConfirm = () => {
+    if (id) {
+      confirmEditProduct(id, productUrl, productName, productDesc);
+    } else {
+      confirmAddProduct(productUrl, productName, productDesc);
+    }
+  };
   return (
     <>
-      <header>
-        <p>{id ? "Edit Product" : "Add Product"}</p>
-      </header>
       <form className="addForm">
         <div className="product_info">
           <label>
@@ -62,6 +59,7 @@ function AddOrEdit(props) {
           </label>
         </div>
       </form>
+      <Footer onClose={onClose} onConfirm={handleConfirm} />
     </>
   );
 }

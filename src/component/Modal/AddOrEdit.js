@@ -1,20 +1,28 @@
-import React, { useState } from "react";
-import Footer from "./Footer";
+import React from "react";
 
 function AddOrEdit(props) {
-  const { editProduct, onClose, confirmAddProduct, confirmEditProduct } = props;
-  const { id, url, name, description } = editProduct;
-  const [productUrl, setProductUrl] = useState(() => url);
-  const [productName, setProductName] = useState(() => name);
-  const [productDesc, setProductDesc] = useState(() => description);
+  const {
+    productUrl,
+    productName,
+    productDesc,
+    handleChangeProductUrl,
+    handleChangeProductName,
+    handleChangeProductDesc,
+  } = props;
 
-  const handleConfirm = () => {
-    if (id) {
-      confirmEditProduct(id, productUrl, productName, productDesc);
-    } else {
-      confirmAddProduct(productUrl, productName, productDesc);
-    }
+  const handleChangeUrl = (e) => {
+    const productUrl = e.target.value;
+    handleChangeProductUrl(productUrl);
   };
+  const handleChangeName = (e) => {
+    const productName = e.target.value;
+    handleChangeProductName(productName);
+  };
+  const handleChangeDesc = (e) => {
+    const productDesc = e.target.value;
+    handleChangeProductDesc(productDesc);
+  };
+
   return (
     <>
       <form className="addForm">
@@ -25,9 +33,10 @@ function AddOrEdit(props) {
               type="url"
               value={productUrl}
               onMouseOver={(e) => (e.target.title = productUrl)}
-              onChange={(e) => {
-                setProductUrl(e.target.value);
-              }}
+              // onChange={(e) => {
+              //   setProductUrl(e.target.value);
+              // }}
+              onChange={handleChangeUrl}
             />
           </label>
         </div>
@@ -38,9 +47,10 @@ function AddOrEdit(props) {
               type="text"
               value={productName}
               onMouseOver={(e) => (e.target.title = productName)}
-              onChange={(e) => {
-                setProductName(e.target.value);
-              }}
+              // onChange={(e) => {
+              //   setProductName(e.target.value);
+              // }}
+              onChange={handleChangeName}
             />
           </label>
         </div>
@@ -52,14 +62,15 @@ function AddOrEdit(props) {
               rows="3"
               value={productDesc}
               onMouseOver={(e) => (e.target.title = productDesc)}
-              onChange={(e) => {
-                setProductDesc(e.target.value);
-              }}
+              // onChange={(e) => {
+              //   setProductDesc(e.target.value);
+              // }}
+              onChange={handleChangeDesc}
             />
           </label>
         </div>
       </form>
-      <Footer onClose={onClose} onConfirm={handleConfirm} />
+      {/*<Footer onClose={onClose} onConfirm={handleConfirm} />*/}
     </>
   );
 }

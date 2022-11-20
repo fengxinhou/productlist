@@ -10,18 +10,32 @@ function ProductList() {
   const [modal, setModal] = useState(false);
   const { products, setProducts } = useContext(ProductContext);
 
-  const confirmAddProduct = async (productUrl, productName, productDesc) => {
-    if (productUrl && productName && productDesc) {
-      const newProduct = {
-        id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
-        url: productUrl,
-        name: productName,
-        description: productDesc,
-      };
-      await addProduct(newProduct);
-      setProducts([...products, newProduct]);
-    }
+  const [productUrl, setProductUrl] = useState("");
+  const [productName, setProductName] = useState("");
+  const [productDesc, setProductDesc] = useState("");
+  const handleChangeProductUrl = (url) => {
+    setProductUrl(url);
+  };
+  const handleChangeProductName = (name) => {
+    setProductName(name);
+  };
+  const handleChangeProductDesc = (desc) => {
+    setProductDesc(desc);
+  };
+
+  const confirmAddProduct = async () => {
+    const newProduct = {
+      id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
+      url: productUrl,
+      name: productName,
+      description: productDesc,
+    };
+    await addProduct(newProduct);
+    setProducts([...products, newProduct]);
     setModal(false);
+    setProductUrl("");
+    setProductName("");
+    setProductDesc("");
   };
 
   return (
@@ -36,11 +50,19 @@ function ProductList() {
         </button>
       </div>
       <Card />
-      <Modal title="add Product" open={modal}>
+      <Modal
+        title="add Product"
+        open={modal}
+        onClose={() => setModal(false)}
+        onConfirm={confirmAddProduct}
+      >
         <AddOrEdit
-          onClose={() => setModal(false)}
-          confirmAddProduct={confirmAddProduct}
-          editProduct={{ url: "", name: "", description: "" }}
+          productUrl={productUrl}
+          productName={productName}
+          productDesc={productDesc}
+          handleChangeProductUrl={handleChangeProductUrl}
+          handleChangeProductName={handleChangeProductName}
+          handleChangeProductDesc={handleChangeProductDesc}
         />
       </Modal>
     </div>

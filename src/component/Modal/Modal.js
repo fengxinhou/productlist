@@ -2,7 +2,7 @@ import React from "react";
 import "./modal.css";
 
 function Modal(props) {
-  const { open, title, children } = props;
+  const { open, title, children, onClose, onConfirm } = props;
 
   return (
     open && (
@@ -11,6 +11,10 @@ function Modal(props) {
         <div className="modal_main">
           <header>{title}</header>
           {children}
+          <footer>
+            <button onClick={onClose}>Cancel</button>
+            <button onClick={onConfirm}>OK</button>
+          </footer>
         </div>
       </>
     )

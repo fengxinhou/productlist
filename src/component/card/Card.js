@@ -12,23 +12,35 @@ function Card() {
   const [editModal, setEditModal] = useState(false);
 
   const [deleteProductID, setDeleteProductID] = useState(0);
-  const [editProduct, setEditProduct] = useState({});
+
+  const [editId, setEditId] = useState(0);
+  const [productUrl, setProductUrl] = useState("");
+  const [productName, setProductName] = useState("");
+  const [productDesc, setProductDesc] = useState("");
+  const handleChangeProductUrl = (url) => {
+    setProductUrl(url);
+  };
+  const handleChangeProductName = (name) => {
+    setProductName(name);
+  };
+  const handleChangeProductDesc = (desc) => {
+    setProductDesc(desc);
+  };
 
   const openDeleteModal = (id) => {
     setDeleteModal(true);
     setDeleteProductID(id);
   };
 
-  const openEditModal = (product) => {
+  const openEditModal = (item) => {
     setEditModal(true);
-    setEditProduct(product);
+    setEditId(item.id);
+    setProductUrl(item.url);
+    setProductName(item.name);
+    setProductDesc(item.description);
   };
-  const confirmEditProduct = async (
-    id,
-    productUrl,
-    productName,
-    productDesc
-  ) => {
+
+  const confirmEditProduct = async (id) => {
     const newProducts = products.map((item) => {
       if (item.id === id) {
         return {
@@ -40,8 +52,8 @@ function Card() {
       }
       return item;
     });
-    await updateProduct(id);
     setProducts(newProducts);
+    await updateProduct(id);
     setEditModal(false);
   };
 
@@ -78,19 +90,24 @@ function Card() {
         title="Edit Product"
         open={editModal}
         onClose={() => setEditModal(false)}
-        onConfirm={confirmEditProduct}
+        onConfirm={() => confirmEditProduct(editId)}
       >
         <AddOrEdit
-          editProduct={editProduct}
-          onClose={() => setEditModal(false)}
-          confirmEditProduct={confirmEditProduct}
+          productUrl={productUrl}
+          productName={productName}
+          productDesc={productDesc}
+          handleChangeProductUrl={handleChangeProductUrl}
+          handleChangeProductName={handleChangeProductName}
+          handleChangeProductDesc={handleChangeProductDesc}
         />
       </Modal>
-      <Modal title="Delete Product" open={deleteModal}>
-        <Delete
-          onClose={() => setDeleteModal(false)}
-          onConfirm={() => confirmDeleteProduct(deleteProductID)}
-        />
+      <Modal
+        title="Delete Product"
+        open={deleteModal}
+        onClose={() => setDeleteModal(false)}
+        onConfirm={() => confirmDeleteProduct(deleteProductID)}
+      >
+        <Delete />
       </Modal>
     </>
   );

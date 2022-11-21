@@ -13,19 +13,12 @@ function Card() {
 
   const [deleteProductID, setDeleteProductID] = useState(0);
 
-  const [editId, setEditId] = useState(0);
-  const [productUrl, setProductUrl] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productDesc, setProductDesc] = useState("");
-  const handleChangeProductUrl = (url) => {
-    setProductUrl(url);
-  };
-  const handleChangeProductName = (name) => {
-    setProductName(name);
-  };
-  const handleChangeProductDesc = (desc) => {
-    setProductDesc(desc);
-  };
+  const [product, setProduct] = useState({
+    id: 0,
+    url: "",
+    name: "",
+    description: "",
+  });
 
   const openDeleteModal = (id) => {
     setDeleteModal(true);
@@ -34,26 +27,32 @@ function Card() {
 
   const openEditModal = (item) => {
     setEditModal(true);
-    setEditId(item.id);
-    setProductUrl(item.url);
-    setProductName(item.name);
-    setProductDesc(item.description);
+    setProduct({
+      id: item.id,
+      url: item.url,
+      name: item.name,
+      description: item.description,
+    });
   };
 
-  const confirmEditProduct = async (id) => {
+  const handleChangeEditProduct = (values) => {
+    setProduct(values);
     const newProducts = products.map((item) => {
-      if (item.id === id) {
+      if (item.id === values.id) {
         return {
           ...item,
-          url: productUrl,
-          name: productName,
-          description: productDesc,
+          url: product.url,
+          name: product.name,
+          description: product.description,
         };
       }
       return item;
     });
     setProducts(newProducts);
-    await updateProduct(id);
+  };
+
+  const confirmEditProduct = async ({ id, url, name, description }) => {
+    await updateProduct(id, url, name, description);
     setEditModal(false);
   };
 
@@ -90,15 +89,11 @@ function Card() {
         title="Edit Product"
         open={editModal}
         onClose={() => setEditModal(false)}
-        onConfirm={() => confirmEditProduct(editId)}
+        onConfirm={() => confirmEditProduct(product)}
       >
         <AddOrEdit
-          productUrl={productUrl}
-          productName={productName}
-          productDesc={productDesc}
-          handleChangeProductUrl={handleChangeProductUrl}
-          handleChangeProductName={handleChangeProductName}
-          handleChangeProductDesc={handleChangeProductDesc}
+          product={product}
+          handleChangeProduct={handleChangeEditProduct}
         />
       </Modal>
       <Modal

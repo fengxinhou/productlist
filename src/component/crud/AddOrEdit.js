@@ -1,26 +1,31 @@
 import React from "react";
 
 function AddOrEdit(props) {
-  const {
-    productUrl,
-    productName,
-    productDesc,
-    handleChangeProductUrl,
-    handleChangeProductName,
-    handleChangeProductDesc,
-  } = props;
-
+  const { product, handleChangeProduct } = props;
+  const { url, name, description } = product;
   const handleChangeUrl = (e) => {
     const productUrl = e.target.value;
-    handleChangeProductUrl(productUrl);
+    const newProduct = {
+      ...product,
+      url: productUrl,
+    };
+    handleChangeProduct(newProduct);
   };
   const handleChangeName = (e) => {
     const productName = e.target.value;
-    handleChangeProductName(productName);
+    const newProduct = {
+      ...product,
+      name: productName,
+    };
+    handleChangeProduct(newProduct);
   };
   const handleChangeDesc = (e) => {
     const productDesc = e.target.value;
-    handleChangeProductDesc(productDesc);
+    const newProduct = {
+      ...product,
+      description: productDesc,
+    };
+    handleChangeProduct(newProduct);
   };
 
   return (
@@ -31,11 +36,8 @@ function AddOrEdit(props) {
             avatar url：
             <input
               type="url"
-              value={productUrl}
-              onMouseOver={(e) => (e.target.title = productUrl)}
-              // onChange={(e) => {
-              //   setProductUrl(e.target.value);
-              // }}
+              value={url}
+              onMouseOver={(e) => (e.target.title = url)}
               onChange={handleChangeUrl}
             />
           </label>
@@ -45,11 +47,8 @@ function AddOrEdit(props) {
             product name：
             <input
               type="text"
-              value={productName}
-              onMouseOver={(e) => (e.target.title = productName)}
-              // onChange={(e) => {
-              //   setProductName(e.target.value);
-              // }}
+              value={name}
+              onMouseOver={(e) => (e.target.title = name)}
               onChange={handleChangeName}
             />
           </label>
@@ -60,17 +59,13 @@ function AddOrEdit(props) {
             <textarea
               className="edit_textarea"
               rows="3"
-              value={productDesc}
-              onMouseOver={(e) => (e.target.title = productDesc)}
-              // onChange={(e) => {
-              //   setProductDesc(e.target.value);
-              // }}
+              value={description}
+              onMouseOver={(e) => (e.target.title = description)}
               onChange={handleChangeDesc}
             />
           </label>
         </div>
       </form>
-      {/*<Footer onClose={onClose} onConfirm={handleConfirm} />*/}
     </>
   );
 }

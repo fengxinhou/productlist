@@ -10,32 +10,27 @@ function ProductList() {
   const [modal, setModal] = useState(false);
   const { products, setProducts } = useContext(ProductContext);
 
-  const [productUrl, setProductUrl] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productDesc, setProductDesc] = useState("");
-  const handleChangeProductUrl = (url) => {
-    setProductUrl(url);
-  };
-  const handleChangeProductName = (name) => {
-    setProductName(name);
-  };
-  const handleChangeProductDesc = (desc) => {
-    setProductDesc(desc);
+  const [product, setProduct] = useState({
+    id: 0,
+    url: "",
+    name: "",
+    description: "",
+  });
+
+  const handleChangeProduct = (item) => {
+    setProduct({
+      id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
+      url: item.url,
+      name: item.name,
+      description: item.description,
+    });
   };
 
   const confirmAddProduct = async () => {
-    const newProduct = {
-      id: products.length > 0 ? products[products.length - 1].id + 1 : 0,
-      url: productUrl,
-      name: productName,
-      description: productDesc,
-    };
-    await addProduct(newProduct);
-    setProducts([...products, newProduct]);
+    await addProduct(product);
+    setProducts([...products, product]);
     setModal(false);
-    setProductUrl("");
-    setProductName("");
-    setProductDesc("");
+    setProduct({ id: 0, url: "", name: "", description: "" });
   };
 
   return (
@@ -57,12 +52,8 @@ function ProductList() {
         onConfirm={confirmAddProduct}
       >
         <AddOrEdit
-          productUrl={productUrl}
-          productName={productName}
-          productDesc={productDesc}
-          handleChangeProductUrl={handleChangeProductUrl}
-          handleChangeProductName={handleChangeProductName}
-          handleChangeProductDesc={handleChangeProductDesc}
+          product={product}
+          handleChangeProduct={handleChangeProduct}
         />
       </Modal>
     </div>

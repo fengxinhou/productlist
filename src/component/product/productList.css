@@ -1,29 +1,114 @@
-.main {
-  background: #f0f2f5;
-  width: 100%;
-  display: flex;
-  align-content: flex-start;
-  flex-wrap: wrap;
+@media (min-width: 1200px) {
+  .main {
+    background: #f0f2f5;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+  }
+  .newCard {
+    background: #ffffff;
+    margin: 20px 10px 10px 5px;
+    position: relative;
+    border: 1px dashed #00a6ff;
+  }
+  .newCard > button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1rem;
+    position: absolute;
+    left: 38%;
+    top: 40%;
+    color: #00a6ff;
+    cursor: pointer;
+  }
+  .newCard > button::before {
+    content: "+ ";
+  }
 }
-.newCard {
-  width: 24%;
-  height: 200px;
-  background: #ffffff;
-  margin: 20px 0 10px 10px;
-  position: relative;
-  border: 1px dashed #00a6ff;
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main {
+    background: #f0f2f5;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+  }
+  .newCard {
+    background: #ffffff;
+    margin: 10px 0 10px 5px;
+    position: relative;
+    border: 1px dashed #00a6ff;
+  }
+  .newCard > button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1rem;
+    position: absolute;
+    left: 33%;
+    top: 40%;
+    color: #00a6ff;
+    cursor: pointer;
+  }
+  .newCard > button::before {
+    content: "+ ";
+  }
 }
-.newCard > button {
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  position: absolute;
-  left: 38%;
-  top: 40%;
-  color: #00a6ff;
-  cursor: pointer;
+@media (min-width: 381px) and (max-width: 767px) {
+  .main {
+    background: #f0f2f5;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+  }
+  .newCard {
+    background: #ffffff;
+    margin: 15px 0 10px 5px;
+    position: relative;
+    border: 1px dashed #00a6ff;
+  }
+  .newCard > button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1rem;
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    color: #00a6ff;
+    cursor: pointer;
+  }
+  .newCard > button::before {
+    content: "+ ";
+  }
 }
-.newCard > button::before {
-  content: "+ ";
+@media (max-width: 380px) {
+  .main {
+    background: #f0f2f5;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+  }
+  .newCard {
+    width: 240px;
+    height: 150px;
+    background: #ffffff;
+    margin: 15px auto 8px;
+    position: relative;
+    border: 1px dashed #00a6ff;
+  }
+  .newCard > button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1rem;
+    position: absolute;
+    left: 34%;
+    top: 40%;
+    color: #00a6ff;
+    cursor: pointer;
+  }
+  .newCard > button::before {
+    content: "+ ";
+  }
 }

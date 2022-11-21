@@ -1,7 +1,7 @@
 @media (min-width: 768px) {
   .header {
     width: 100%;
-    margin: 0 0 30px 20px;
+    margin: 0 0 15px 3px;
     background: #ffffff;
   }
   .header_title img {
@@ -51,7 +51,7 @@
   .header {
     width: 100%;
     font-size: 0.6rem;
-    margin: 0 0 15px 3px;
+    margin: 0 0 6px 3px;
     background: #ffffff;
   }
   .header_title img {
@@ -62,6 +62,7 @@
   }
   .catalogue {
     display: flex;
+    margin-top: 2px;
   }
   .catalogue_list {
     display: flex;

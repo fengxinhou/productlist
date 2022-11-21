@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import "./card.css";
 import { ProductContext } from "../../App";
 import Modal from "../Modal/Modal";
-import AddOrEdit from "../Modal/AddOrEdit";
-import Delete from "../Modal/Delete";
+import AddOrEdit from "../crud/AddOrEdit";
+import Delete from "../crud/Delete";
 import { deleteProduct, updateProduct } from "../../api/products";
 
 function Card() {
@@ -67,7 +67,7 @@ function Card() {
     <>
       {products.map((item) => {
         return (
-          <div className="card" key={item.id}>
+          <div className="card" key={item.id} role="card">
             <div className="card_product">
               <img src={item.url} alt={`product-${item.name}`} />
               <div className="content">

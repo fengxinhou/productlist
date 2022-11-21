@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./productList.css";
 import Card from "../card/Card";
 import Modal from "../Modal/Modal";
-import AddOrEdit from "../Modal/AddOrEdit";
+import AddOrEdit from "../crud/AddOrEdit";
 import { ProductContext } from "../../App";
 import { addProduct } from "../../api/products";
 

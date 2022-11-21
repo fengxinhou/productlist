@@ -1,5 +1,27 @@
 .delete p {
-  margin: 100px 0 100px 0;
   text-align: center;
-  font-size: 1.8rem;
+}
+@media (min-width: 1200px) {
+  .delete p {
+    margin: 100px 0 100px 0;
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .delete p {
+    margin: 100px 0 100px 0;
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 381px) and (max-width: 767px) {
+  .delete p {
+    margin: 50px 0 70px 10px;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 380px) {
+  .delete p {
+    margin: 50px 0 70px 10px;
+    font-size: 0.6rem;
+  }
 }

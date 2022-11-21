@@ -35,7 +35,6 @@
     font-size: 1rem;
   }
   .card .option {
-    margin-top: 10px;
     margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -87,7 +86,6 @@
     font-size: 1rem;
   }
   .card .option {
-    margin-top: 10px;
     margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -140,7 +138,6 @@
     font-size: 0.7rem;
   }
   .card .option {
-    margin-top: 10px;
     margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -195,7 +192,6 @@
     font-size: 0.7rem;
   }
   .card .option {
-    margin-top: 10px;
     margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;

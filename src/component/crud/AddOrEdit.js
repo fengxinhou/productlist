@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./addOrEdit.css";
 function AddOrEdit(props) {
   const { product, handleChangeProduct } = props;
   const { url, name, description } = product;

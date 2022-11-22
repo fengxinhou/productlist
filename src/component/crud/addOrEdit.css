@@ -1,15 +1,49 @@
+.addForm {
+  margin-top: 5%;
+  width: 100%;
+  height: 60%;
+  font-size: 0.6rem;
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+}
+.product_info {
+  width: 90%;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+.product_info:nth-child(2) {
+  margin-left: -10px;
+}
+.product_info:nth-child(3) {
+  margin-left: 11px;
+}
+.product_info label {
+  text-align: center;
+  display: block;
+}
+.product_info input {
+  width: 45%;
+  height: 25px;
+  font-size: 0.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.product_info textarea {
+  resize: none;
+  width: 45%;
+  height: 40px;
+  vertical-align: middle;
+  letter-spacing: 1px;
+  font-size: 0.6rem;
+}
 @media (min-width: 1200px) {
   .addForm {
-    margin-top: 5%;
-    width: 100%;
     height: 55%;
     font-size: 1.5rem;
-    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
   .product_info {
     width: 100%;
     height: 25%;
-    white-space: nowrap;
   }
   .product_info:nth-child(2) {
     margin-left: -23px;
@@ -17,39 +51,23 @@
   .product_info:nth-child(3) {
     margin-left: 23px;
   }
-  .product_info label {
-    text-align: center;
-    display: block;
-  }
   .product_info input {
-    width: 45%;
     height: 30px;
     font-size: 1rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
   .product_info textarea {
-    resize: none;
-    width: 45%;
     height: 80px;
-    vertical-align: middle;
-    letter-spacing: 1px;
     font-size: 1rem;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
   .addForm {
-    margin-top: 5%;
-    width: 100%;
     height: 55%;
     font-size: 1.5rem;
-    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
   .product_info {
     width: 100%;
     margin-bottom: 24px;
-    white-space: nowrap;
   }
   .product_info:nth-child(2) {
     margin-left: -21px;
@@ -57,39 +75,24 @@
   .product_info:nth-child(3) {
     margin-left: 24px;
   }
-  .product_info label {
-    text-align: center;
-    display: block;
-  }
   .product_info input {
     width: 46%;
     height: 30px;
     font-size: 1rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
   .product_info textarea {
-    resize: none;
     width: 46%;
     height: 80px;
-    vertical-align: middle;
-    letter-spacing: 1px;
     font-size: 1rem;
   }
 }
 @media (min-width: 381px) and (max-width: 767px) {
   .addForm {
-    margin-top: 5%;
-    width: 100%;
-    height: 60%;
     font-size: 0.8rem;
-    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
   .product_info {
     width: 90%;
     margin-bottom: 23px;
-    white-space: nowrap;
   }
   .product_info:nth-child(2) {
     margin-left: -13px;
@@ -97,64 +100,13 @@
   .product_info:nth-child(3) {
     margin-left: 13px;
   }
-  .product_info label {
-    text-align: center;
-    display: block;
-  }
   .product_info input {
     width: 45%;
     height: 25px;
     font-size: 0.8rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
   .product_info textarea {
-    resize: none;
-    width: 45%;
     height: 35px;
-    vertical-align: middle;
-    letter-spacing: 1px;
     font-size: 0.8rem;
-  }
-}
-@media (max-width: 380px) {
-  .addForm {
-    margin-top: 5%;
-    width: 100%;
-    height: 60%;
-    font-size: 0.6rem;
-    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
-  }
-  .product_info {
-    width: 90%;
-    margin-bottom: 15px;
-    white-space: nowrap;
-  }
-  .product_info:nth-child(2) {
-    margin-left: -10px;
-  }
-  .product_info:nth-child(3) {
-    margin-left: 11px;
-  }
-  .product_info label {
-    text-align: center;
-    display: block;
-  }
-  .product_info input {
-    width: 45%;
-    height: 25px;
-    font-size: 0.6rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  .product_info textarea {
-    resize: none;
-    width: 45%;
-    height: 40px;
-    vertical-align: middle;
-    letter-spacing: 1px;
-    font-size: 0.6rem;
   }
 }

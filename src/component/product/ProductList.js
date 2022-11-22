@@ -32,6 +32,7 @@ function ProductList() {
     setModal(false);
     setProduct({ id: 0, url: "", name: "", description: "" });
   };
+
   const closeModal = () => {
     setProduct({ id: 0, url: "", name: "", description: "" });
     setModal(false);

@@ -1,75 +1,58 @@
-@media (min-width: 768px) {
-  .header {
-    width: 100%;
-    margin: 0 0 15px 3px;
-    background: #ffffff;
-  }
-  .header_title img {
-    float: right;
-    width: 170px;
-    height: 100px;
-    margin: -80px 20px 10px 0;
-  }
-  .catalogue {
-    display: flex;
-  }
-  .catalogue_list {
-    margin-right: 20px;
-    color: #00a6ff;
-  }
-  .catalogue_list i {
-    margin-right: 5px;
-  }
+.header {
+  width: 100%;
+  font-size: 0.6rem;
+  margin: 0 0 6px 3px;
+  background: #ffffff;
+}
+.header_title img {
+  float: right;
+  width: 120px;
+  height: 70px;
+  margin: -60px 6px 10px 0;
+}
+.catalogue {
+  display: flex;
+  margin-top: 2px;
+}
+.catalogue_list {
+  display: flex;
+  margin-right: 5px;
+  color: #00a6ff;
+}
+.catalogue_list i {
+  margin: -2px 2px 0 0;
 }
 @media (min-width: 381px) and (max-width: 767px) {
   .header {
-    width: 100%;
     margin: 0 0 15px 3px;
     font-size: 0.8rem;
-    background: #ffffff;
   }
   .header_title img {
-    float: right;
     width: 130px;
     height: 80px;
     margin: -60px 6px 10px 0;
   }
-  .catalogue {
-    display: flex;
-  }
   .catalogue_list {
     margin-right: 22px;
-    color: #00a6ff;
-    display: flex;
   }
   .catalogue_list i {
-    margin-right: 4px;
+    margin: 0 4px 0 0;
   }
 }
-
-@media (max-width: 380px) {
+@media (min-width: 768px) {
   .header {
-    width: 100%;
-    font-size: 0.6rem;
-    margin: 0 0 6px 3px;
-    background: #ffffff;
+    margin: 0 0 12px 3px;
+    font-size: 1rem;
   }
   .header_title img {
-    float: right;
-    width: 120px;
-    height: 70px;
-    margin: -60px 6px 10px 0;
-  }
-  .catalogue {
-    display: flex;
-    margin-top: 2px;
+    width: 170px;
+    height: 100px;
+    margin: -80px 20px 10px 0;
   }
   .catalogue_list {
-    display: flex;
-    margin-right: 5px;
-    color: #00a6ff;
+    margin-right: 20px;
   }
   .catalogue_list i {
-    margin: -2px 2px 0 0;
+    margin: 0 5px 0 0;
   }
 }

@@ -42,6 +42,7 @@ function ProductList() {
     <div className="main">
       <div className="newCard">
         <button
+          data-testid="add_btn"
           onClick={() => {
             setModal(true);
           }}
@@ -51,7 +52,7 @@ function ProductList() {
       </div>
       <Card />
       <Modal
-        title="add Product"
+        title="Add Product"
         open={modal}
         onClose={closeModal}
         onConfirm={confirmAddProduct}

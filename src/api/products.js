@@ -14,10 +14,8 @@ export const updateProduct = (
   editProductName,
   editProductDesc
 ) =>
-  axios
-    .put(`${URL}/${id}`, {
-      url: editProductUrl,
-      name: editProductName,
-      description: editProductDesc,
-    })
-    .then((res) => res.status);
+  axios.put(`${URL}/${id}`, {
+    url: editProductUrl,
+    name: editProductName,
+    description: editProductDesc,
+  });

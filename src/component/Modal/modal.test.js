@@ -2,9 +2,8 @@ import Modal from "./Modal";
 import { fireEvent, render } from "@testing-library/react";
 import Delete from "../crud/Delete";
 import "@testing-library/jest-dom";
-import React from "react";
 
-describe("modal and delete component", () => {
+describe("modal UI test", () => {
   let element = null;
   const handleClose = jest.fn();
   const handleConfirm = jest.fn();
@@ -24,13 +23,14 @@ describe("modal and delete component", () => {
   afterEach(() => {
     element = null;
   });
-  test("modal shows the children and a close button", () => {
+  test("Cancel should be called", () => {
     const { getByText } = element;
     expect(getByText("Delete Product")).toBeTruthy();
     fireEvent.click(getByText(/Cancel/i));
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
-  test("modal shows the children and a confirm button", () => {
+
+  test("OK should be called", () => {
     const { getByText } = element;
     expect(getByText("Delete Product")).toBeTruthy();
     fireEvent.click(getByText(/OK/i));

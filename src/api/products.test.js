@@ -65,7 +65,6 @@ describe("delete products", () => {
   test("return a new products when deleteProduct is called", async () => {
     axios.delete.mockResolvedValue(200);
     const result = await deleteProduct(1);
-    console.log(result);
     expect(result).toEqual(200);
   });
 });

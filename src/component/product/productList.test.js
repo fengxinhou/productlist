@@ -1,6 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
 import { ProductContext } from "../../App";
-import React from "react";
 import "@testing-library/jest-dom";
 
 import ProductList from "./ProductList";
@@ -34,6 +33,10 @@ describe("test productList component", () => {
   afterEach(() => {
     element = null;
   });
+  test("should render productList component", async () => {
+    expect(element).toBeDefined();
+  });
+
   test("should render add modal when click add button", async () => {
     const addBtn = element.getAllByTestId("add_btn");
     userEvent.click(addBtn[0]);

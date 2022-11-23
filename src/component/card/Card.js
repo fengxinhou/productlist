@@ -70,17 +70,33 @@ function Card() {
             <div className="card_product">
               <img src={item.url} alt={`product-${item.name}`} />
               <div className="content">
-                <span onMouseOver={(e) => (e.target.title = item.name)}>
+                <span
+                  title="span_title"
+                  onMouseOver={(e) => (e.target.title = item.name)}
+                >
                   {item.name}
                 </span>
-                <p onMouseOver={(e) => (e.target.title = item.description)}>
+                <p
+                  title="p_title"
+                  onMouseOver={(e) => (e.target.title = item.description)}
+                >
                   {item.description}
                 </p>
               </div>
             </div>
             <div className="option">
-              <button onClick={() => openEditModal(item)}>编辑</button>
-              <button onClick={() => openDeleteModal(item.id)}>删除</button>
+              <button
+                data-testid="edit_btn"
+                onClick={() => openEditModal(item)}
+              >
+                编辑
+              </button>
+              <button
+                data-testid="delete_btn"
+                onClick={() => openDeleteModal(item.id)}
+              >
+                删除
+              </button>
             </div>
           </div>
         );

@@ -1,57 +1,74 @@
-import { getByText, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import Card from "./Card";
 import React from "react";
 import { ProductContext } from "../../App";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 
-describe("productList", () => {
-  let mockProduct = [
-    {
-      id: 1,
-      url: "https://pic.616pic.com/ys_img/00/03/78/04RotuWM2Y.jpg",
-      name: "Alipay",
-      description:
-        "支付宝（中国）网络技术有限公司成立于2004年，是国内的第三方支付平台，致力于为企业和个人提供'简单、安全、快速、便捷'的支付解决方案。 支付宝公司从2004年建立开始，始终以'信任'作为产品和服务的核心。 旗下有'支付宝'与'支付宝钱包'两个独立品牌。 自2014年第二季度开始成为当前全球最大的移动支付厂商。",
-    },
-    {
-      id: 2,
-      url: "https://pic.616pic.com/ys_img/00/03/78/04RotuWM2Y.jpg",
-      name: "react",
-      description:
-        "支付宝（中国）网络技术有限公司成立于2004年，是国内的第三方支付平台，致力于为企业和个人提供'简单、安全、快速、便捷'的支付解决方案。 支付宝公司从2004年建立开始，始终以'信任'作为产品和服务的核心。 旗下有'支付宝'与'支付宝钱包'两个独立品牌。 自2014年第二季度开始成为当前全球最大的移动支付厂商。",
-    },
-  ];
-  const { getAllByRole, getAllByText, getByText } = render(
-    <ProductContext.Provider value={{ products: mockProduct }}>
-      <Card />
-    </ProductContext.Provider>
-  );
+let mockProduct = [
+  {
+    id: 1,
+    url: "https://pic.616pic.com/ys_img/00/03/78/04RotuWM2Y.jpg",
+    name: "test1",
+    description: "测试测试测试测试测试测试测试测试测试测试",
+  },
+  {
+    id: 2,
+    url: "https://pic.616pic.com/ys_img/00/03/78/04RotuWM2Y.jpg",
+    name: "test2",
+    description:
+      "支付宝（中国）网络技术有限公司成立于2004年，是国内的第三方支付平台，致力于为企业和个人提供'简单、安全、快速、便捷'的支付解决方案。 支付宝公司从2004年建立开始，始终以'信任'作为产品和服务的核心。 旗下有'支付宝'与'支付宝钱包'两个独立品牌。 自2014年第二季度开始成为当前全球最大的移动支付厂商。",
+  },
+];
+
+describe("test card component", () => {
+  let element = null;
+  beforeEach(() => {
+    element = render(
+      <ProductContext.Provider value={{ products: mockProduct }}>
+        <Card />
+      </ProductContext.Provider>
+    );
+  });
+
+  afterEach(() => {
+    element = null;
+  });
+
   test("should render mockProduct list", () => {
-    const items = getAllByRole("card");
+    const items = element.getAllByRole("card");
     expect(items.length).toEqual(2);
   });
 
-  test("should render two edit button when have two products", () => {
-    const editBtn = getAllByText("编辑");
-    expect(editBtn).toHaveLength(2);
+  test("should render edit modal when click edit button", async () => {
+    const editBtn = element.getAllByTestId("edit_btn");
+    userEvent.click(editBtn[0]);
+    await waitFor(() => {
+      expect(element.getByText("Edit Product")).toBeInTheDocument();
+    });
   });
 
   test("should render delete modal when click delete button", async () => {
-    const deleteBtn = getAllByText("删除");
-    userEvent.click(deleteBtn[0]);
+    const deleteBtn = element.getAllByTestId("delete_btn")[0];
+    userEvent.click(deleteBtn);
     await waitFor(() => {
       expect(
-        getByText("Are you sure you want to delete this product?")
+        element.getByText("Are you sure you want to delete this product?")
       ).toBeInTheDocument();
     });
   });
 
-  test("should render edit modal when click delete button", async () => {
-    const editBtn = getAllByText("编辑");
-    userEvent.click(editBtn[0]);
-    await waitFor(() => {
-      expect(getByText("Edit Product")).toBeInTheDocument();
-    });
+  test("should loader context when onMouseOver", async () => {
+    const { getAllByTitle, getByText } = element;
+
+    const spanContent = getAllByTitle("span_title");
+    fireEvent.mouseOver(spanContent[0]);
+    expect(getByText("test1")).toBeInTheDocument();
+
+    const pContent = getAllByTitle("p_title");
+    fireEvent.mouseOver(pContent[1]);
+    expect(
+      getByText("测试测试测试测试测试测试测试测试测试测试")
+    ).toBeInTheDocument();
   });
 });

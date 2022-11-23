@@ -41,9 +41,9 @@ function Card() {
       if (item.id === values.id) {
         return {
           ...item,
-          url: product.url,
-          name: product.name,
-          description: product.description,
+          url: values.url,
+          name: values.name,
+          description: values.description,
         };
       }
       return item;

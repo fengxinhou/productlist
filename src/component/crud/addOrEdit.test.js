@@ -20,6 +20,7 @@ describe("initially AddOrEdit", () => {
     expect(input).toHaveValue("");
   });
 });
+
 describe("render AddOrEdit", () => {
   const product1 = {
     id: 0,
@@ -51,6 +52,7 @@ describe("render AddOrEdit", () => {
     };
     const input = getByLabelText("product name：");
     fireEvent.change(input, { target: { value: "测试name" } });
+
     expect(hasInputValue(input, "测试name")).toBe(true);
   });
 
@@ -70,5 +72,37 @@ describe("render AddOrEdit", () => {
     const inputDesc = getByLabelText("desc：");
     fireEvent.mouseOver(inputDesc);
     expect(hasInputValue(inputDesc, "测试description")).toBeTruthy();
+  });
+
+  test("should change input value by mockHandleChange", () => {
+    const { getByLabelText } = element;
+    const inputUrl = getByLabelText("avatar url：");
+    expect(inputUrl).toBeInTheDocument();
+    fireEvent.change(inputUrl, { target: { value: "change url" } });
+    expect(mockHandleChange).toHaveBeenCalledWith({
+      description: "测试description",
+      id: 0,
+      name: "测试name",
+      url: "change url",
+    });
+    const inputName = getByLabelText("product name：");
+    expect(inputName).toBeInTheDocument();
+    fireEvent.change(inputName, { target: { value: "change name" } });
+    expect(mockHandleChange).toHaveBeenCalledWith({
+      description: "测试description",
+      id: 0,
+      name: "change name",
+      url: "测试url",
+    });
+    const inputDesc = getByLabelText("desc：");
+    expect(inputDesc).toBeInTheDocument();
+    fireEvent.change(inputDesc, { target: { value: "change desc" } });
+
+    expect(mockHandleChange).toHaveBeenCalledWith({
+      description: "change desc",
+      id: 0,
+      name: "测试name",
+      url: "测试url",
+    });
   });
 });

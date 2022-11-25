@@ -43,6 +43,37 @@
   background: #00a6ff;
   color: white;
 }
+
+@media (min-width: 381px) {
+  .modal_main {
+    width: 70%;
+    height: 300px;
+  }
+  .modal_main footer {
+    float: right;
+  }
+  .modal_main button {
+    margin: 10px 20px 0 0;
+    width: 60px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 768px) {
+  .modal_main {
+    width: 60%;
+    height: 400px;
+  }
+  .modal_main header {
+    font-size: 1.8rem;
+  }
+  .modal_main button {
+    margin: 20px 40px 0 0;
+    width: 80px;
+    height: 30px;
+    font-size: 1.25rem;
+  }
+}
 @media (min-width: 1200px) {
   .modal_main {
     width: 60%;
@@ -56,35 +87,5 @@
     width: 80px;
     height: 30px;
     font-size: 1.25rem;
-  }
-}
-@media (min-width: 768px) and (max-width: 1199px) {
-  .modal_main {
-    width: 60%;
-    height: 400px;
-  }
-  .modal_main header {
-    font-size: 1.8rem;
-  }
-  .modal_main button {
-    margin: 20px 40px 0 0;
-    width: 80px;
-    height: 30px;
-    font-size: 1.25rem;
-  }
-}
-@media (min-width: 381px) and (max-width: 767px) {
-  .modal_main {
-    width: 70%;
-    height: 300px;
-  }
-  .modal_main footer {
-    float: right;
-  }
-  .modal_main button {
-    margin: 10px 20px 0 0;
-    width: 60px;
-    height: 30px;
-    font-size: 0.8rem;
   }
 }

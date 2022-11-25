@@ -50,33 +50,27 @@
 .card .option button:first-child {
   border-right: 2px solid rgba(0, 0, 0, 0.03);
 }
-@media (min-width: 1200px) {
+@media (min-width: 381px) {
   .card {
     width: 95%;
-    height: 88%;
-    margin: 20px 10px 10px 5px;
+    margin: 15px 5px 10px 5px;
   }
   .card_product {
-    grid-template-columns: 60px auto;
+    grid-template-columns: 30px auto;
   }
   .card_product img {
-    width: 50px;
-    height: 50px;
-  }
-  .card_product .content {
-    grid-template-rows: 30px auto;
-  }
-  .card_product .content span {
-    font-size: 1.5rem;
+    width: 30px;
     height: 30px;
   }
-  .card_product .content p {
-    height: 75px;
-    -webkit-line-clamp: 4;
-    font-size: 1rem;
+  .card_product .content {
+    grid-template-rows: 10px auto;
+  }
+  .card_product .content span {
+    font-size: 0.8rem;
+    height: 20px;
   }
 }
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 768px) {
   .card {
     width: 95%;
     height: 90%;
@@ -101,23 +95,29 @@
     font-size: 1rem;
   }
 }
-@media (min-width: 381px) and (max-width: 767px) {
+@media (min-width: 1200px) {
   .card {
     width: 95%;
-    margin: 15px 5px 10px 5px;
+    height: 88%;
+    margin: 20px 10px 10px 5px;
   }
   .card_product {
-    grid-template-columns: 30px auto;
+    grid-template-columns: 60px auto;
   }
   .card_product img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
   }
   .card_product .content {
-    grid-template-rows: 10px auto;
+    grid-template-rows: 30px auto;
   }
   .card_product .content span {
-    font-size: 0.8rem;
-    height: 20px;
+    font-size: 1.5rem;
+    height: 30px;
+  }
+  .card_product .content p {
+    height: 75px;
+    -webkit-line-clamp: 4;
+    font-size: 1rem;
   }
 }

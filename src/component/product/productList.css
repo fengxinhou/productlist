@@ -26,22 +26,20 @@
 .newCard > button::before {
   content: "+ ";
 }
-
-@media (min-width: 1200px) {
+@media (min-width: 381px) {
   .main {
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(2, 50%);
   }
   .newCard {
     width: 95%;
-    height: 87%;
-    margin: 20px 10px 10px 5px;
+    margin: 15px 0 10px 5px;
   }
   .newCard > button {
-    left: 38%;
+    left: 30%;
     top: 40%;
   }
 }
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 768px) {
   .main {
     grid-template-columns: repeat(3, 33%);
   }
@@ -55,16 +53,17 @@
     top: 40%;
   }
 }
-@media (min-width: 381px) and (max-width: 767px) {
+@media (min-width: 1200px) {
   .main {
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(4, 25%);
   }
   .newCard {
     width: 95%;
-    margin: 15px 0 10px 5px;
+    height: 87%;
+    margin: 20px 10px 10px 5px;
   }
   .newCard > button {
-    left: 30%;
+    left: 38%;
     top: 40%;
   }
 }

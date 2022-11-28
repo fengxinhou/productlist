@@ -31,7 +31,7 @@ describe("render AddOrEdit", () => {
   let element = null;
   beforeEach(() => {
     element = render(
-      <AddOrEdit product={product1} handleChangeProduct={mockHandleChange} />
+      <AddOrEdit product={product1} handleAddOrEditProduct={mockHandleChange} />
     );
   });
 

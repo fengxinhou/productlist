@@ -77,7 +77,7 @@
 @media (min-width: 1200px) {
   .modal_main {
     width: 60%;
-    height: 400px;
+    height: 50%;
   }
   .modal_main header {
     font-size: 1.8rem;

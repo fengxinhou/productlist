@@ -1,7 +1,7 @@
 import React from "react";
 import "./addOrEdit.css";
 function AddOrEdit(props) {
-  const { product, handleChangeProduct } = props;
+  const { product, handleAddOrEditProduct } = props;
   const { url, name, description } = product;
   const handleChangeUrl = (e) => {
     const productUrl = e.target.value;
@@ -9,7 +9,7 @@ function AddOrEdit(props) {
       ...product,
       url: productUrl,
     };
-    handleChangeProduct(newProduct);
+    handleAddOrEditProduct(newProduct);
   };
   const handleChangeName = (e) => {
     const productName = e.target.value;
@@ -17,7 +17,7 @@ function AddOrEdit(props) {
       ...product,
       name: productName,
     };
-    handleChangeProduct(newProduct);
+    handleAddOrEditProduct(newProduct);
   };
   const handleChangeDesc = (e) => {
     const productDesc = e.target.value;
@@ -25,7 +25,7 @@ function AddOrEdit(props) {
       ...product,
       description: productDesc,
     };
-    handleChangeProduct(newProduct);
+    handleAddOrEditProduct(newProduct);
   };
 
   return (
